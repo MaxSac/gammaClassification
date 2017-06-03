@@ -50,7 +50,7 @@ crab_it = read_h5py_chunked(
 	'data/crab_precuts.hdf5',
 	key='events',
 	columns=feature,
-	chunksize=180000)
+	chunksize=250000)
 print('start next')
 crab, start, end = next(crab_it)
 
