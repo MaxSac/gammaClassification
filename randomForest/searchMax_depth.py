@@ -12,7 +12,7 @@ X_train, X_test, y_train, y_test = train_test_split(dataCrab.drop('label',
 	axis=1),dataCrab.label, random_state=0)
 
 accuracy = np.array([[],[],[]])
-for n in np.linspace(1,30,15):
+for n in np.linspace(1,20,15):
 	Tree = RandomForestClassifier(random_state=0, max_depth=n, 
 			n_estimators=200, n_jobs=18,verbose=1)
 	Tree.fit(X_train, y_train)

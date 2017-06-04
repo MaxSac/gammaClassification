@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split, cross_val_score
 plt.style.use('ggplot')
 
 dataCrab = pd.read_pickle('../data/dataCrab')
-dataSimu = pd.read_pickle('../data/dataSimu')
 
 Tree = RandomForestClassifier(random_state=0, max_depth=13, n_estimators=500,
 	n_jobs=18,verbose=1)

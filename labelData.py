@@ -59,7 +59,7 @@ Visualisation of the theta-cuts, too make sure that there are know gammas in
 the signal any more. 
 """
 print('-----make hist')
-thetaCut = 0.2
+thetaCut = 0.0
 plt.title('Theta-cut ' + str(thetaCut) + ' for a better precision')
 plt.hist((gammas.theta_deg)**2, np.linspace(0,1.5,50), alpha=0.3, normed=True, label='gammas')
 plt.hist((proton.theta_deg)**2, np.linspace(0,1.5,50),alpha=0.3, normed=True, label='simulierte proton')
