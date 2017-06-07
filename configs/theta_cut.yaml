@@ -1,0 +1,4 @@
+selection:
+        theta_deg:
+                - '>='
+                - 0.707
