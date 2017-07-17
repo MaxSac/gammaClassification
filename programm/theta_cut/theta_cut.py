@@ -17,7 +17,7 @@ def theta_cut(path_gamma, path_hadron, theta_cut,
 		feature = yaml.load(f)
 	
 	gamma_data = pd.read_hdf(path_gamma, key='events')[feature]
-	hadron_data = read_h5py(path_hadron, key='events', columns=list(feature)+ 
+	hadron_data = read_h5py(path_hadron, key='events', columns=feature+ 
 					['theta_deg'])
 
 	'''

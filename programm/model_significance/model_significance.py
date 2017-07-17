@@ -12,6 +12,10 @@ There is a function which can calculated the highest significance. Another
 function which plot the significance in dependence of threshold and an on 
 off ratio plotter.
 '''
+def load_feature():
+		with open('/home/msackel/Desktop/gammaClassification/config/feature.yaml') as f:
+			feature = yaml.load(f)
+		return feature
 
 def model_significance(estimator, data):
 		'''
@@ -26,11 +30,12 @@ def model_significance(estimator, data):
 			max(significance): float
 				Maximal signigicance on the dataset by given model.
 		'''
+		feature = load_feature()
 		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
 		significance = []
 		for threshold in np.linspace(0.01, 0.99, 99):
 			on_data, off_data = split_on_off_source_independent(
-							hadron_data.query('gamma_prediction >'+threshold.astype(str)),
+							data.query('gamma_prediction >'+threshold.astype(str)),
 							theta2_cut=0.03)
 			significance.append(li_ma_significance(len(on_data), len(off_data), 0.2))
 		return max(significance)
@@ -45,11 +50,12 @@ def plot_significance(estimator, data):
 			data: pd.DataFrame
 				The dataset where the siginificance should be calculated
 		'''
+		feature = load_feature()
 		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
 		significance = []
 		for threshold in np.linspace(0.01, 0.99, 99):
 			on_data, off_data = split_on_off_source_independent(
-							hadron_data.query('gamma_prediction >'+threshold.astype(str)), 
+							data.query('gamma_prediction >'+threshold.astype(str)), 
 							theta2_cut=0.03)
 			significance.append(li_ma_significance(len(on_data), len(off_data), 0.2))
 		plt.plot(np.linspace(0.01, 0.99, 99), significance)
@@ -69,6 +75,8 @@ def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3]):
 			data: pd.DataFrame
 				The dataset where the siginificance should be calculated
 		'''
+		feature = load_feature()
+		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
 		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
 		selected = data.query('gamma_prediction >= '+ str(threshold))
 		theta_on = selected.theta_deg
@@ -80,3 +88,4 @@ def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3]):
 		plt.xlabel(r'theta$^{2}$')
 		plt.ylabel(r'events')
 		plt.savefig('on_off_ratio.pdf')
+
