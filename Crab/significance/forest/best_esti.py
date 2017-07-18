@@ -6,7 +6,7 @@ exec(open('/home/msackel/Desktop/gammaClassification/programm/model_significance
 
 significance = []
 
-Tree = RandomForestClassifier(max_depth=15, max_features=7, criterion='entropy', n_estimators=100, n_jobs=20)
+Tree = RandomForestClassifier(max_depth=15, max_features=7, criterion='entropy', n_estimators=100, n_jobs=10)
 
 with open('/home/msackel/Desktop/gammaClassification/config/feature.yaml') as f:
 		feature = yaml.load(f)

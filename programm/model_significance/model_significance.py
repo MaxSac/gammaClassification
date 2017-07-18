@@ -31,7 +31,7 @@ def model_significance(estimator, data):
 				Maximal signigicance on the dataset by given model.
 		'''
 		feature = load_feature()
-		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
+		data['gamma_prediction'] = estimator.predict_proba(data[feature])[:,1]
 		significance = []
 		for threshold in np.linspace(0.01, 0.99, 99):
 			on_data, off_data = split_on_off_source_independent(
@@ -51,7 +51,7 @@ def plot_significance(estimator, data):
 				The dataset where the siginificance should be calculated
 		'''
 		feature = load_feature()
-		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
+		data['gamma_prediction'] = estimator.predict_proba(data[feature])[:,1]
 		significance = []
 		for threshold in np.linspace(0.01, 0.99, 99):
 			on_data, off_data = split_on_off_source_independent(
@@ -76,8 +76,8 @@ def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3]):
 				The dataset where the siginificance should be calculated
 		'''
 		feature = load_feature()
-		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
-		data['gamma_prediction'] = Tree.predict_proba(data[feature])[:,1]
+		data['gamma_prediction'] = estimator.predict_proba(data[feature])[:,1]
+		data['gamma_prediction'] = estimator.predict_proba(data[feature])[:,1]
 		selected = data.query('gamma_prediction >= '+ str(threshold))
 		theta_on = selected.theta_deg
 		theta_off = pd.concat([selected['theta_deg_off_' + str(i)] for i in range(1, 6)])
