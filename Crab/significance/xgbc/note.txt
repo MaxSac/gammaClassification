@@ -1,0 +1,5 @@
+For further research a theta ** 2 cut from 0.10 is used. Under the cut I don't 
+realy know if the estimator does some confusing things. I loose if the plot is 
+right some singnificance but i can be sure that the estimator is learned on 
+testset with fewer hadrons and don't have to regulaize that much that without 
+a cut. 

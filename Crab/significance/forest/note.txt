@@ -1,0 +1,3 @@
+For further investigation a theta ** 2 cut from 0.5 is used. It's looks like 
+that the estimator isn't so robust for hadron missmatches and its work better
+if ther is a clearer trainingset. A higher theta cut will loose universality.

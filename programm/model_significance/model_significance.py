@@ -40,7 +40,7 @@ def model_significance(estimator, data):
 			significance.append(li_ma_significance(len(on_data), len(off_data), 0.2))
 		return max(significance)
 
-def plot_significance(estimator, data):
+def plot_significance(estimator, data, save=True, path= 'significance.pdf'):
 		'''
 		Plot the significance in dependence to threshold.
 		Parameters:
@@ -59,12 +59,13 @@ def plot_significance(estimator, data):
 							theta2_cut=0.03)
 			significance.append(li_ma_significance(len(on_data), len(off_data), 0.2))
 		plt.plot(np.linspace(0.01, 0.99, 99), significance)
+		if(save==True):
+			plt.title('max('+str(round(max(significance),2))+')')
+			plt.xlabel('threshold')
+			plt.ylabel('confidence')
+			plt.savefig(path)
 
-		plt.xlabel('threshold')
-		plt.ylabel('confidence')
-		plt.savefig('significance.pdf')
-
-def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3]):
+def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3], path='on_off_ratio.pdf'):
 		'''
 		Plot the classified signal and background in a histogramm. On the 
 		x-axis is theta**2 on the other the number of events.
@@ -87,5 +88,4 @@ def plot_on_off_ratio(estimator, data, threshold, Bins=100, Range= [0,3]):
 
 		plt.xlabel(r'theta$^{2}$')
 		plt.ylabel(r'events')
-		plt.savefig('on_off_ratio.pdf')
-
+		plt.savefig(path)
