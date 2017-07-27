@@ -6,9 +6,8 @@ import pandas as pd
 import yaml
 from fact.io import read_h5py
 
-def theta_cut(path_gamma, path_hadron, theta_cut, 
+def theta_cut(path_gamma, path_hadron, theta_cut, length=None,
 				path_feature='/home/msackel/Desktop/gammaClassification/config/feature.yaml'):
-
 	'''
 	Read to concanate features from *.yaml file. And load the data from the given files.
 	Hadron file added theta_deg feature to make theta cut on data.
@@ -30,6 +29,8 @@ def theta_cut(path_gamma, path_hadron, theta_cut,
 	'''
 	Length is set to the minimal lenght of the both data and a concat dataset is returned.
 	'''
-	length = min([len(hadron_data), len(gamma_data)])
+	if(length==None):
+		length = min([len(hadron_data), len(gamma_data)])
+	
 
 	return pd.concat([hadron_data.drop('theta_deg', axis=1)[:length], gamma_data[:length]])

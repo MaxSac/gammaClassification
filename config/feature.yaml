@@ -10,5 +10,4 @@
 - num_pixel_in_shower 
 - ph_charge_shower_max
 - ph_charge_shower_mean
-- ph_charge_shower_min
 - ph_charge_shower_variance
