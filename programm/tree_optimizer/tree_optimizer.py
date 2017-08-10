@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+plt.style.use('msackel')
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 import yaml
-plt.style.use('ggplot')
 
 def optimize_forest(config, visualisation= False):
 	'''
@@ -39,6 +39,7 @@ def optimize_forest(config, visualisation= False):
 	Save the scorrings of the different parameters.
 	'''
 	best_esti = pd.DataFrame(clf.cv_results_)
+	best_esti = best_esti.sort_values('mean_test_score')
 	best_esti.to_pickle('bestEsti')
 	
 	if(visualisation == True):
@@ -52,7 +53,7 @@ def optimize_forest(config, visualisation= False):
 		plt.yticks(range(len(np.unique(FEATURE_2.values))), y)
 		plt.xlabel(FEATURE_1.name)
 		plt.ylabel(FEATURE_2.name)
-		plt.title('Feature grid to search best roc_auc score')
+		plt.title('ROC AUC: ('+ str(np.round(best_esti['mean_test_score'][0], 3)) + ' +- ' + str(np.round(best_esti['std_test_score'][0],3))+')')
 		plt.colorbar()
 		plt.savefig('parameter_grid.pdf')
 	

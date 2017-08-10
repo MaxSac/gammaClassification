@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from fact.analysis import li_ma_significance, split_on_off_source_independent
-plt.style.use('ggplot')
 
 '''
 With this function there are possibilities to get more information over the 

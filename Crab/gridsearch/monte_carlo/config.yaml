@@ -1,0 +1,35 @@
+---
+path: './train_set'
+
+set_params:
+    n_estimators: 100
+    n_jobs: 20
+    verbose: 1 
+    bootstrap: True
+
+loop_params:
+    max_depth: 
+        - 1
+        - 4
+        - 7 
+        - 9
+        - 11
+        - 13
+        - 15
+        - 20
+
+    max_features:  
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 9
+
+grid_params:
+    cv: 3
+    scoring: 'roc_auc'
+
+plot_feature:
+    feature_one: 'max_depth'
+    feature_two: 'max_features'
