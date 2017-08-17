@@ -1,8 +1,8 @@
 from xgboost.sklearn import XGBClassifier
 from fact.io import read_h5py
-
 exec(open('/home/msackel/Desktop/gammaClassification/programm/theta_cut/theta_cut.py').read())
 exec(open('/home/msackel/Desktop/gammaClassification/programm/model_significance/model_significance.py').read())
+plt.style.use('msackel')
 
 xgbc = XGBClassifier(				
 				max_depth= 1,

@@ -34,7 +34,7 @@ eval_data = read_h5py(
 				)
 
 print('---Theta**2 = 0.5')
-train_data = pd.read_pickle('/home/msackel/Desktop/gammaClassification/data/complete_Datasets/dataSimu')
+train_data = pd.read_pickle('/home/msackel/Desktop/gammaClassification/data/dataSimu')
 
 xgbc.fit(train_data.drop('label', axis=1), train_data.label)
 

@@ -39,8 +39,9 @@ def optimize_forest(config, visualisation= False):
 	Save the scorrings of the different parameters.
 	'''
 	best_esti = pd.DataFrame(clf.cv_results_)
-	best_esti = best_esti.sort_values('mean_test_score')
 	best_esti.to_pickle('bestEsti')
+
+	order = np.argmax(best_esti['mean_test_score'])
 	
 	if(visualisation == True):
 		FEATURE_1 = best_esti['param_' + CONF['plot_feature']['feature_one']]
@@ -53,7 +54,7 @@ def optimize_forest(config, visualisation= False):
 		plt.yticks(range(len(np.unique(FEATURE_2.values))), y)
 		plt.xlabel(FEATURE_1.name)
 		plt.ylabel(FEATURE_2.name)
-		plt.title('ROC AUC: ('+ str(np.round(best_esti['mean_test_score'][0], 3)) + ' +- ' + str(np.round(best_esti['std_test_score'][0],3))+')')
+		plt.title('ROC AUC: ('+ str(np.round(best_esti['mean_test_score'][order], 3)) + ' +- ' + str(np.round(best_esti['std_test_score'][order],3))+')')
 		plt.colorbar()
 		plt.savefig('parameter_grid.pdf')
 	
