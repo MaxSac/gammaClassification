@@ -4,7 +4,7 @@ exec(open('/home/msackel/Desktop/gammaClassification/programm/theta_cut/theta_cu
 exec(open('/home/msackel/Desktop/gammaClassification/programm/model_significance/model_significance.py').read())
 plt.style.use('msackel')
 
-Tree = RandomForestClassifier(max_depth=15, max_features=7, criterion='entropy', n_estimators=100, n_jobs=15)
+Tree = RandomForestClassifier(max_depth=15, criterion='entropy', n_estimators=100, n_jobs=15)
 
 with open('/home/msackel/Desktop/gammaClassification/config/feature.yaml') as f:
 		feature = yaml.load(f)

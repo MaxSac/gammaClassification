@@ -43,6 +43,7 @@ Tree.fit(train_Tree.drop('label', axis=1), train_Tree.label)
 
 plt.hist(xgbc.predict_proba(eval_data[feature])[:,1], range=[0,1], bins=30, histtype='step', label='XGBC')
 plt.hist(Tree.predict_proba(eval_data[feature])[:,1], range=[0,1], bins=30, histtype='step', label='Forest')
+plt.xlabel('conf')
 plt.legend(loc='best')
 plt.savefig('whole_conf.pdf')
 
@@ -56,7 +57,7 @@ pred_xgbc = xgbc.predict_proba(stack_data.drop('label', axis=1))[:,1]
 fig = plt.figure()
 ax1 = fig.add_subplot(211)
 plt.title('Confidence distribution Tree')
-plt.hist([pred_tree[stack_data['label']==1], pred_tree[stack_data['label']==0]], label=['test', 'train'], stacked=True, normed=True, bins=10, range=[0.7,1])
+plt.hist([pred_tree[stack_data['label']==1], pred_tree[stack_data['label']==0]], label=['Proton', 'Gamma'], stacked=True, normed=True, bins=10, range=[0.7,1])
 plt.setp(ax1.get_xticklabels(), visible=False) # make these tick labels invisible
 plt.legend()
 plt.ylim(0,6)
@@ -65,6 +66,7 @@ ax2 = fig.add_subplot(212, sharex=ax1)
 plt.title('Confidence distribution XGBC')
 plt.hist([pred_xgbc[stack_data['label']==1], pred_xgbc[stack_data['label']==0]], stacked=True, normed=True, bins=10, range=[0.7,1])
 plt.ylim(0,6)
+plt.xlabel('conf')
 fig.set_size_inches(5,7)
 plt.setp(ax1.get_xticklabels(), visible=False) # make these tick labels invisible
 fig.tight_layout()
@@ -98,5 +100,7 @@ for x in np.linspace(0.7,1,20):
 fig=  plt.figure()
 plt.plot(np.linspace(0.7,1,20), pred_XGBC, label='XGBC')
 plt.plot(np.linspace(0.7,1,20), pred_Tree, label='Forest')
+plt.xlabel('conf')
+plt.ylabel('$\sigma$')
 plt.legend()
 plt.savefig('explanation.pdf')

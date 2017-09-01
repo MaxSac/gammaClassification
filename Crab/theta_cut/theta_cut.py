@@ -3,6 +3,7 @@ from matplotlib import gridspec
 import pandas as pd
 import numpy as np
 from fact.io import read_h5py
+plt.style.use('msackel')
 
 hadron = read_h5py(
 				'/home/msackel/Desktop/gammaClassification/data/raw_data/crab_precuts.hdf5',
@@ -32,7 +33,7 @@ plt.legend()
 plt.setp(ax1.get_xticklabels(), visible=False) # make these tick labels invisible
 
 ax2 = plt.subplot(gs[1], sharex=ax1)
-plt.bar(np.linspace(0.0,2.88,20), histGammas[0]/histHadron[0], width= 0.12)
+plt.bar(np.linspace(0.0,2.88,20)+0.06, histGammas[0]/histHadron[0], width= 0.12)
 plt.yscale('log')
 plt.xlabel(r'$\theta^2$')
 
