@@ -22,7 +22,7 @@ theta_off = pd.concat([crab_data['theta_deg_off_' + str(i)] for i in range(1, 6)
 plt.style.use('msackel')
 
 plt.hist(theta_on**2, range=[0, 0.2], bins=50, histtype='step', label='On')
-plt.hist(theta_off**2, range=[0, 0.2], bins=50, alpha=0.3, label='Off', weights=np.full(len(theta_off),  0.2))
+plt.hist(theta_off**2, range=[0, 0.2], bins=50, alpha=0.6, label='Off', weights=np.full(len(theta_off),  0.2))
 plt.plot([0.03,0.03], [0,7000], '-.', label=r'$\theta^2$ cut')
 plt.text(0.008, 4870, r'FP', fontsize=15)
 plt.text(0.008, 5300, r'TP', fontsize=15)

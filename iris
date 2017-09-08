@@ -1,0 +1,32 @@
+digraph Tree {
+node [shape=box] ;
+0 [label="leakage2 <= 0.0002\ngini = 0.5\nsamples = 200000\nvalue = [100000, 100000]\nclass = Hadron"] ;
+1 [label="num_islands <= 1.5\ngini = 0.4423\nsamples = 131588\nvalue = [43448, 88140]\nclass = Gamma"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="width <= 9.9924\ngini = 0.3912\nsamples = 114377\nvalue = [30510, 83867]\nclass = Gamma"] ;
+1 -> 2 ;
+3 [label="gini = 0.3613\nsamples = 107681\nvalue = [25488, 82193]\nclass = Gamma"] ;
+2 -> 3 ;
+4 [label="gini = 0.375\nsamples = 6696\nvalue = [5022, 1674]\nclass = Hadron"] ;
+2 -> 4 ;
+5 [label="width <= 9.0514\ngini = 0.3733\nsamples = 17211\nvalue = [12938, 4273]\nclass = Hadron"] ;
+1 -> 5 ;
+6 [label="gini = 0.4451\nsamples = 11511\nvalue = [7663, 3848]\nclass = Hadron"] ;
+5 -> 6 ;
+7 [label="gini = 0.138\nsamples = 5700\nvalue = [5275, 425]\nclass = Hadron"] ;
+5 -> 7 ;
+8 [label="leakage2 <= 0.1807\ngini = 0.2866\nsamples = 68412\nvalue = [56552, 11860]\nclass = Hadron"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="width <= 10.4657\ngini = 0.4358\nsamples = 26280\nvalue = [17849, 8431]\nclass = Hadron"] ;
+8 -> 9 ;
+10 [label="gini = 0.4949\nsamples = 16941\nvalue = [9322, 7619]\nclass = Hadron"] ;
+9 -> 10 ;
+11 [label="gini = 0.1588\nsamples = 9339\nvalue = [8527, 812]\nclass = Hadron"] ;
+9 -> 11 ;
+12 [label="width <= 9.5723\ngini = 0.1495\nsamples = 42132\nvalue = [38703, 3429]\nclass = Hadron"] ;
+8 -> 12 ;
+13 [label="gini = 0.2112\nsamples = 27327\nvalue = [24048, 3279]\nclass = Hadron"] ;
+12 -> 13 ;
+14 [label="gini = 0.0201\nsamples = 14805\nvalue = [14655, 150]\nclass = Hadron"] ;
+12 -> 14 ;
+}
