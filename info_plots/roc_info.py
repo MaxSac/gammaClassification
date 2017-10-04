@@ -42,7 +42,7 @@ fpr, tpr, threshold = metrics.roc_curve(y_test, pred)
 Pred = Tree_mit_theta.predict_proba(X_test)[:,1]
 Fpr, Tpr, Threshold = metrics.roc_curve(y_test, Pred)
 
-fig = plt.figure(figsize=(5,4))
+fig = plt.figure(figsize=(2.728,2.1824))
 plt.plot(fpr,tpr, label=r'ohne $\theta$')
 plt.plot(Fpr,Tpr, label=r'mit $\theta$')
 plt.plot(np.linspace(0,1,10), np.linspace(0,1,10), '-.', label=r'Zufall')

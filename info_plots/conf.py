@@ -28,8 +28,9 @@ mc_Tree.fit(mc_data.drop('label', axis=1), mc_data.label)
 mc_pred = mc_Tree.predict_proba(eval_data)[:,1]
 mess_pred = mess_Tree.predict_proba(eval_data)[:,1]
 
-plt.hist(mc_pred, bins=20, histtype='step', label='MC')
-plt.hist(mess_pred, bins=20, histtype='step', label='Mess')
+plt.figure(figsize=(5,3.75))
+plt.hist(mc_pred, bins=20, histtype='step', label='MC-Daten')
+plt.hist(mess_pred, bins=20, histtype='step', label='Messdaten')
 plt.xlabel(r'Konfidenz')
 plt.legend()
 plt.savefig('plots/conf.pdf')
